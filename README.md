@@ -2,7 +2,7 @@
 
 Click or scan the QR code to open PianoTeacher in your browser.
 
-[![QR Code](http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=https%3A%2F%2Fjohannsofke.github.io%2Fpianoteacher%2F&qzone=1&margin=0&size=150x150&ecc=L)](https://johannsofke.github.io/pianoteacher/)
+[![QR Code](http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=https%3A%2F%2Fjohannsofke.github.io%2FPianoTeacher%2F&qzone=1&margin=0&size=150x150&ecc=L)](https://johannsofke.github.io/PianoTeacher/)
 
 ## Edit on CodeSandbox
 
