@@ -56,7 +56,8 @@ let thisChord
 let backgroundColor = '#01DFD7'
 let textColor = '#1D2333'
 let speak = false
-let assetsPath = '/assets/'
+let assetsPath =
+  'https://cdn.jsdelivr.net/gh/JohannSofke/PianoTeacher@master/assets/'
 
 function preload() {
   soundFormats('mp3')
