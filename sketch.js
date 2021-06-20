@@ -59,6 +59,9 @@ let speak = false
 let assetsPath =
   'https://cdn.jsdelivr.net/gh/JohannSofke/PianoTeacher@master/assets/'
 
+let microphone
+let currentCord
+
 function preload() {
   soundFormats('mp3')
   adur = loadSound(assetsPath + 'a-dur')
@@ -89,6 +92,10 @@ function preload() {
 }
 
 function setup() {
+  getAudioContext().suspend()
+  microphone = new p5.AudioIn()
+  microphone.start()
+
   createCanvas(400, 400)
   background(backgroundColor)
   fill(textColor)
@@ -100,21 +107,29 @@ function setup() {
 }
 
 function draw() {
-  if (mouseIsPressed) {
-    speak = true
-
+  if (typeof currentCord !== 'undefined') {
     background(backgroundColor)
-    fill(textColor)
 
+    soundLevel = microphone.getLevel()
+    soundDiameter = map(soundLevel, 0, 0.2, 0, width)
+    noStroke()
+    fill(234, 31, 81)
+    circle(width / 2, height / 2, soundDiameter)
+
+    fill(textColor)
     textSize(80)
     textAlign(RIGHT, CENTER)
-    thisChord = random(chords)
-    text(thisChord, width / 1.22, height / 2)
+    text(currentCord, width / 1.22, height / 2)
+  }
+
+  if (mouseIsPressed) {
+    speak = true
+    currentCord = random(chords)
   } else {
-    if (thisChord && speak) {
+    if (currentCord && speak) {
       speak = false
 
-      switch (thisChord) {
+      switch (currentCord) {
         case 'A-Dur':
           adur.play()
           break
@@ -188,7 +203,13 @@ function draw() {
         case 'H-Moll':
           hmoll.play()
           break
+        default:
+          break
       }
     }
   }
+}
+
+function mousePressed() {
+  userStartAudio()
 }
